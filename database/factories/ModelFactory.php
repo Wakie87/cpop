@@ -11,6 +11,7 @@
 |
 */
 
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -19,5 +20,19 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+
+$factory->define(App\Supplier::class, function (Faker\Generator $faker) {
+	$localisedFaker = Faker\Factory::create("en_AU");
+    return [
+    	'name' => $faker->company,
+        'address' => $localisedFaker->streetAddress,
+        'suburb' => $localisedFaker->city,
+        'postcode' => $localisedFaker->postcode,
+        'state' => $localisedFaker->state,
+        'telephone' => $localisedFaker->phoneNumber,
+        'fax' => $localisedFaker->phoneNumber,
     ];
 });

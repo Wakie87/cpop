@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => ['web']], function() {
+  Route::resource('suppliers','SupplierController');  
+});
+
+// Route::get('/suppliers', function () {
+//     $suppliers = \App\Supplier::all();
+//     return view('suppliers', compact('suppliers'));
+// });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
