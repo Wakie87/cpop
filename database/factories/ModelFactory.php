@@ -31,7 +31,7 @@ $factory->define(App\Supplier::class, function (Faker\Generator $faker) {
         'address' => $localisedFaker->streetAddress,
         'suburb' => $localisedFaker->city,
         'postcode' => $localisedFaker->postcode,
-        'state' => $localisedFaker->state,
+        'state' => $localisedFaker->stateAbbr,
         'telephone' => $localisedFaker->phoneNumber,
         'fax' => $localisedFaker->phoneNumber,
     ];
