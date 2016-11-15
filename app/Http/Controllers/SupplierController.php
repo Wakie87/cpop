@@ -54,7 +54,7 @@ class SupplierController extends Controller
         $supplier->telephone = $request->telephone;
         $supplier->fax = $request->fax;
         $supplier->save();
-        return redirect()->route('suppliers.index')->with('alert-success','Supplier has been saved!');
+        return redirect()->route('suppliers.index')->with('message-success','Supplier created!');
 
     }
 
@@ -106,7 +106,7 @@ class SupplierController extends Controller
         $supplier->fax = $request->fax;
         $supplier->save();
 
-        return redirect()->route('suppliers.index')->with('alert-success','Supplier has been saved!');
+        return redirect()->route('suppliers.index')->with('message-success', 'Supplier updated!');
     }
 
     /**
@@ -120,6 +120,6 @@ class SupplierController extends Controller
         // delete data
         $supplier = Supplier::findOrFail($id);
         $supplier->delete();
-        return redirect()->route('suppliers.index')->with('alert-success','Supplier has been deleted!');
+        return redirect()->route('suppliers.index')->with('message-success', 'Supplier deleted!');
     }
 }

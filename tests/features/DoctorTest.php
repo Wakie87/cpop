@@ -3,7 +3,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class SupplierTest extends TestCase
+class DoctorTest extends TestCase
 
 {
     use DatabaseMigrations;
@@ -21,48 +21,48 @@ class SupplierTest extends TestCase
      */
     public function testCreateSuccess()
     {
-        $input = factory(App\Supplier::class)->make()->toArray();
+        $input = factory(App\Doctor::class)->make()->toArray();
         $this->actingAs($this->user)
-            ->visit('suppliers/create')
+            ->visit('doctors/create')
             ->submitForm('Save', $input)
-            ->see('Supplier created!')
-            ->seePageIs('suppliers');
+            ->see('Doctor created!')
+            ->seePageIs('doctors');
     }
 
     public function testEditDataAvailable()
     {
-        factory(App\Supplier::class)->create();
+        factory(App\Doctor::class)->create();
         $this->actingAs($this->user)
-            ->visit('suppliers/1/edit')
-            ->see('Suppliers - Edit');
+            ->visit('doctors/1/edit')
+            ->see('Doctors - Edit');
     }
 
     public function testEditDataNotFound()
     {
         $this->actingAs($this->user)
-            ->get('suppliers/1/edit')
+            ->get('doctors/1/edit')
             ->assertResponseStatus(404);
     }
 
     public function testUpdateSuccess()
     {
-        factory(App\Supplier::class)->create(['name' => 'Supplier Tests']); 
-        $input = factory(App\Supplier::class)->make()->toArray();
+        factory(App\Doctor::class)->create(); 
+        $input = factory(App\Doctor::class)->make()->toArray();
         $this->actingAs($this->user)
-            ->visit('suppliers/1/edit')
+            ->visit('doctors/1/edit')
             ->submitForm('Update', $input)
-            ->see('Supplier updated!')
-            ->seePageIs('suppliers');
+            ->see('Doctor updated!')
+            ->seePageIs('doctors');
     }
 
     public function testDeleteSuccess()
     {
-        factory(App\Supplier::class)->create(['name' => 'Supplier Tests']);
+        factory(App\Doctor::class)->create(['first_name' => 'Doctor Tests']);
         $this->actingAs($this->user)
-            ->visit('suppliers')
+            ->visit('doctors')
             ->submitForm('Delete')
-            ->see('Supplier deleted!')
-            ->seePageIs('suppliers');
+            ->see('Doctor deleted!')
+            ->seePageIs('doctors');
     }
 
 }

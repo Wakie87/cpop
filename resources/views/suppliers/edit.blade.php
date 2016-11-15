@@ -2,7 +2,7 @@
   @section('content')
   <div class="row">
     <div class="col-md-12">
-      <h1>Edit Data</h1>
+      <h1>Suppliers - Edit</h1>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
 
     <div class="form-group">
       {{link_to_route('suppliers.index', 'Cancel', '', array('class' => 'btn btn-danger'))}}
-      {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
+      {!! Form::submit('Update', ['class' => 'btn btn-success']) !!}
     </div>
 
   {!! Form::close() !!}

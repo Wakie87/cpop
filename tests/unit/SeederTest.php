@@ -7,13 +7,13 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class SeederTest extends TestCase
 
 {
-    use DatabaseTransactions;
+    use DatabaseMigrations;
 
 	public function testSuppliersTable()
 	{
 		factory(App\Supplier::class)->create([
-	        'name' => 'Fitchs Pharmacy',
+		    'name'  => 'Sigma'
 	    ]);
-	  $this->seeInDatabase('suppliers', ['name' => 'Fitchs Pharmacy']);
+	  $this->seeInDatabase('suppliers', ['name' => 'Sigma']);
 	}
 }	

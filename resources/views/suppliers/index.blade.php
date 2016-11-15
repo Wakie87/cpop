@@ -21,7 +21,7 @@
         <tr>
           <td>{{$no++}}</td>
           <td>{{$supplier->name}}</td>
-          <td>{{$supplier->address}}, {{$supplier->suburb}}, {{$supplier->state}}, {{$supplier->postcode}}</td>
+          <td>{{$supplier->full_address}}</td>
           <td>{{$supplier->telephone}}</td>
           <td>{{$supplier->fax}}</td>
           <td>
@@ -29,7 +29,7 @@
               <input type="hidden" name="_method" value="delete">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               {{link_to_route('suppliers.edit', 'Edit', array($supplier->id), array('class' => 'btn btn-primary'))}}
-              <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data');" name="name" value="delete">
+              <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data');" name="Delete" value="Delete">
             </form>
           </td>
         </tr>

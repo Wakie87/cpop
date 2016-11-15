@@ -36,3 +36,22 @@ $factory->define(App\Supplier::class, function (Faker\Generator $faker) {
         'fax' => $localisedFaker->phoneNumber,
     ];
 });
+
+
+$factory->define(App\Doctor::class, function (Faker\Generator $faker) {
+    $localisedFaker = Faker\Factory::create("en_AU");
+    return [
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'clinic_name' => $faker->company,
+        'address' => $localisedFaker->streetAddress,
+        'suburb' => $localisedFaker->city,
+        'postcode' => $localisedFaker->postcode,
+        'state' => $localisedFaker->stateAbbr,
+        'telephone' => $localisedFaker->phoneNumber,
+        'fax' => $localisedFaker->phoneNumber,
+        'mobile' => $localisedFaker->phoneNumber,
+        'email' => $localisedFaker->email,
+        'provider_id' => $faker->randomNumber(7),
+    ];
+});
