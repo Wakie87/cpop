@@ -20,6 +20,5 @@ class SuppliersTableSeeder extends Seeder
     	foreach ($suppliers as $supplier){
     		factory(App\Supplier::class)->create($supplier);
     	}
-        //factory(App\Supplier::class)->create($suppliers);
     }
 }

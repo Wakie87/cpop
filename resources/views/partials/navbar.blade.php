@@ -22,6 +22,7 @@
                         <li class="active"><a href="/">Home</a></li>
                         <li><a href="/suppliers">Suppliers</a></li>
                         <li><a href="/doctors">Doctors</a></li>
+                        <li><a href="/users">Users</a></li>
                         <li><a href="#"></a></li>
                     </ul>
                     <!-- Left Side Of Navbar -->

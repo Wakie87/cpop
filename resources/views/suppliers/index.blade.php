@@ -6,15 +6,17 @@
     </div>
   </div>
   <div class="row">
-    <table class="table table-striped">
+    <table class="table table-striped" data-toggle="table">
+    <thead>
       <tr>
         <th>No.</th>
-        <th>Name</th>
+        <th data-sortable="true">Name</th>
         <th>Address</th>
         <th>Phone</th>
         <th>Fax</th>
         <th>Actions</th>
       </tr>
+      </thead>
       <a href="{{route('suppliers.create')}}" class="btn btn-info pull-right">Create New Supplier</a><br><br>
       <?php $no=1; ?>
       @foreach ($suppliers as $supplier)

@@ -15,11 +15,9 @@ class DoctorController extends Controller
      */
     public function index(Request $request)
     {
-        $order = $request->get('order'); // Order by what column?
 
 
-        $doctors = Doctor::orderBy($order, 'asc')->get();
-        //$data['doctors'] = $doctors;
+        $doctors = Doctor::All();
         return view('doctors.index',['doctors' => $doctors]);
 
     }
@@ -43,8 +41,9 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-          'first_name'=> 'required',
-          'last_name'=> 'required',
+          'first_name' => 'required',
+          'last_name' => 'required',
+          'provider_id' => 'required',
      
         ]);
           // create new data
@@ -101,8 +100,9 @@ class DoctorController extends Controller
     {
                 // validation
         $this->validate($request,[
-          'first_name'=> 'required',
-          'last_name'=> 'required',
+          'first_name' => 'required',
+          'last_name' => 'required',
+          'provider_id' => 'required',
       ]);
 
         $doctor = Doctor::findOrFail($id);

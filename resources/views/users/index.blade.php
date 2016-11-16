@@ -2,7 +2,7 @@
 @section('content')
  <div class="row">
     <div class="col-md-12">
-      <h1>Doctors</h1>
+      <h1>Users</h1>
     </div>
   </div>
   <div class="row">
@@ -12,29 +12,33 @@
         <th>No.</th>
         <th data-sortable="true">First Name</th>
         <th data-sortable="true">Last Name</th>
-        <th>Clinic</th>
-        <th>Address</th>
-        <th>Provider ID</th>
-        <th>Phone</th>
+        <th>Registration ID</th>
+        <th>Type</th>
+        <th>Status</th>
         <th>Actions</th>
       </tr>
       </thead>
-      <a href="{{route('doctors.create')}}" class="btn btn-info pull-right">Create New Doctor</a><br><br>
+      <a href="{{route('users.create')}}" class="btn btn-info pull-right">Create New Pharmacist</a><br><br>
       <?php $no=1; ?>
-      @foreach ($doctors as $doctor)
+      @foreach ($users as $user)
         <tr>
           <td>{{$no++}}</td>
-          <td>{{$doctor->first_name}}</td>
-          <td>{{$doctor->last_name}}</td>
-          <td>{{$doctor->clinic_name}}</td>
-          <td>{{$doctor->full_address}}</td>
-          <td>{{$doctor->provider_id}}</td>
-          <td>{{$doctor->telephone}}</td>
+          <td>{{$user->first_name}}</td>
+          <td>{{$user->last_name}}</td>
+          <td>{{$user->reg_id}}</td>
+          <td>{{$user->type}}</td>
           <td>
-            <form class="" action="{{route('doctors.destroy',$doctor->id)}}" method="post">
+            @if ($user->status == 1)
+            Enabled
+            @elseif ($user->status == 0) 
+            Disabled
+            @endif
+          </td>
+          <td>
+            <form class="" action="{{route('users.destroy',$user->id)}}" method="post">
               <input type="hidden" name="_method" value="delete">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              {{link_to_route('doctors.edit', 'Edit', array($doctor->id), array('class' => 'btn btn-primary'))}}
+              {{link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-primary'))}}
               <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data');" name="Delete" value="Delete">
             </form>
           </td>
