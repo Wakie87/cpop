@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('reg_id')->unique();
             $table->string('password');
             $table->string('type');
-            $table->boolean('status');
+            $table->tinyInteger('status', 4)->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

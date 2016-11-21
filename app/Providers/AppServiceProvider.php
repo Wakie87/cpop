@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+use App\View\Directives\PageHeaderDirective;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +16,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->bootCustomBladeDirectives();
+    }
+
+    /**
+     * Boot custom blade directives.
+     */
+    protected function bootCustomBladeDirectives()
+    {
+
+        Blade::directive('pageHeader', function ($expression) {
+            return "<?php echo app('App\\View\\Directives\\PageHeaderDirective')->handle({$expression}); ?>";
+        });
+
     }
 
     /**
@@ -24,5 +39,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton(PageHeaderDirective::class, PageHeaderDirective::class);
     }
 }
