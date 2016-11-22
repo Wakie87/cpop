@@ -5,7 +5,6 @@
 @stop
 
 @push('styles')
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 @endpush
 
 @section('page-title')
@@ -18,7 +17,7 @@
       <div class="box-header with-border">
             <h3 class="box-title">
                 <i class="fa fa-search"></i>&nbsp;
-                {{trans('cms::user.index.search')}}
+                {{trans('user.index.search')}}
                 <small>search and filter records.</small>
             </h3>
             <div class="box-tools pull-right">

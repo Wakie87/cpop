@@ -34,8 +34,8 @@ elixir(mix => {
         dirs.vendor + '/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js',
         dirs.vendor + '/AdminLTE/plugins/slimScroll/jquery.slimscroll.js',
         dirs.vendor + '/AdminLTE/plugins/chartjs/Chart.js',
-        dirs.vendor + '/datatables.net/js/jquery.dataTables.min.js',
-        dirs.vendor + '/datatables.net-bs/js/dataTables.bootstrap.min.js',
+        dirs.vendor + '/AdminLTE/plugins/datatables/jquery.dataTables.min.js',
+        dirs.vendor + '/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js',
         dirs.public + '/datatables/buttons.server-side.js'
     ], 'public/js/admin.js');
 
@@ -47,7 +47,8 @@ elixir(mix => {
         dirs.vendor + '/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
         dirs.vendor + '/AdminLTE/dist/css/AdminLTE.css',
         dirs.vendor + '/AdminLTE/dist/css/skins/_all-skins.css',
-        dirs.vendor + '/datatables.net-bs/css/dataTables.bootstrap.min.css'
+        dirs.vendor + '/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
+        dirs.vendor + '/AdminLTE/plugins/datatables/jquery.dataTables.min.css',
     ], 'public/css/admin.css')
 
     // Copy AdminLTE assets.

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\DataTables\UserDataTable;
 use App\Http\Requests;
-use App\User;
 
 class UserController extends Controller
 {
@@ -13,13 +12,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(UserDataTable $dataTable)
     {
-
-
-        $users = User::All();
-        return view('users.index',['users' => $users]);
-
+        return $dataTable->render('users.index');
     }
 
     /**
