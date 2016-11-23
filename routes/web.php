@@ -18,7 +18,9 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function() {
   Route::resource('suppliers','SupplierController');  
   Route::resource('doctors','DoctorController');  
-  Route::resource('users','UserController');  
+  Route::resource('users','UserController');
+  Route::resource('roles','RoleController'); 
+  Route::resource('permissions','PermissionController');   
 });
 
 

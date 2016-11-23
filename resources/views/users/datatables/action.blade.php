@@ -11,68 +11,26 @@
         </button>
         <ul class="dropdown-menu pull-right" role="menu">
             <li>
-                <button data-href="{{ route('#', $id) }}"
+                <button data-href="{{ route('users', $id) }}"
                         class="btn btn-link"
                 >
                     <i class="fa fa-pencil"></i> {{trans('user.edit-user')}}
                 </button>
             </li>
             <li>
-                <button data-href="{{ route('#', $id) }}"
+                <button data-href=""
                         class="btn btn-link"
                 >
                     <i class="fa fa-refresh"></i> {{trans('user.change-password')}}
                 </button>
             </li>
-                @if(!$confirmed)
-                    <li>
-                        <button data-ajax="{!! route('#', $id) !!}"
-                                class="btn btn-link"
-                        >
-                            <i class="fa fa-play"></i> {{trans('user.activate')}}
-                        </button>
-                    </li>
-                @else
-                    <li>
-                        <button data-ajax="{!! route('#', $id) !!}"
-                                class="btn btn-link"
-                        >
-                            <i class="fa fa-pause"></i> {{trans('user.deactivate')}}
-                        </button>
-                    </li>
-                @endif
-
-                @if($blocked)
-                    <li>
-                        <button data-ajax="{!! route('#', $id) !!}"
-                                class="btn btn-link"
-                        >
-                            <i class="fa fa-check"></i> {{trans('user.unblock')}}
-                        </button>
-                    </li>
-                @else
-                    <li>
-                        <button data-ajax="{!! route('#', $id) !!}"
-                                class="btn btn-link"
-                        >
-                            <i class="fa fa-ban"></i> {{trans('user.block')}}
-                        </button>
-                    </li>
-                @endif
-                <li>
-                    <button data-remote="{!! route('#', $id) !!}"
-                            class="btn btn-link btn-delete"
-                    >
-                        <i class="fa fa-trash"></i> {{trans('user.delete')}}
-                    </button>
-                </li>
-                <li>
-                    <button data-href="{!! route('#', $id) !!}"
-                            class="btn btn-link"
-                    >
-                        <i class="fa fa-eye"></i> {{trans('user.view')}}
-                    </button>
-                </li>
+            <li>
+                <button data-remote=""
+                        class="btn btn-link btn-delete"
+                >
+                    <i class="fa fa-trash"></i> {{trans('user.delete')}}
+                </button>
+            </li>
         </ul>
     </div>
 </div>

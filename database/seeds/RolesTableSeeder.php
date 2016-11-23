@@ -12,24 +12,24 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         //
-        $admin = new Role();
-		$admin->name         = 'admin';
-		$admin->display_name = 'Administrator'; // optional
-		$admin->description  = 'Root'; // optional
-		$admin->save();
+        $adminRole = new Role();
+		$adminRole->name         = 'administrator';
+		$adminRole->display_name = 'Administrator'; // optional
+		$adminRole->description  = 'System Administrator'; // optional
+		$adminRole->save();
 
 		 //
-        $manager = new Role();
-		$manager->name         = 'manager';
-		$manager->display_name = 'Manager'; // optional
-		$manager->description  = 'User is allowed to manage and edit other users'; // optional
-		$manager->save();
+        $managerRole = new Role();
+		$managerRole->name         = 'manager';
+		$managerRole->display_name = 'Manager'; // optional
+		$managerRole->description  = 'User is allowed to manage and edit other users'; // optional
+		$managerRole->save();
 
 		        //
-        $pharmacist = new Role();
-		$pharmacist->name         = 'pharmacist';
-		$pharmacist->display_name = 'Pharmacist'; // optional
-		$pharmacist->description  = 'User is allowed to dose patients'; // optional
-		$pharmacist->save();
+        $pharmacistRole = new Role();
+		$pharmacistRole->name         = 'pharmacist';
+		$pharmacistRole->display_name = 'Pharmacist'; // optional
+		$pharmacistRole->description  = 'User is allowed to dose patients'; // optional
+		$pharmacistRole->save();
     }
 }

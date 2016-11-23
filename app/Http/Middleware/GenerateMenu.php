@@ -25,16 +25,9 @@ class GenerateMenu
             //Users
             $users = $menu->add('Users', '#')->data('icon', 'key');
             $users->add('Manage', 'users')->data('icon', 'users');
-            $users->add('Roles', '#')->data('icon', 'shield')
-                  ->data([
-                      'permission' => 'role.view',
-                      'append'     => '#',
-                  ]);
-            $users->add('Permissions', '#')->data('icon', 'tag')
-                  ->data([
-                      'permission' => 'permission.view',
-                      'append'     => '#',
-                  ]);
+            $users->add('Roles', 'roles')->data('icon', 'shield');
+            $users->add('Permissions', 'permissions')->data('icon', 'tag');
+
 
             $config = $menu->add('Configurations', '#')->data('icon', 'gears');
             $config->add('Extensions', '#')->data('icon', 'plug')
@@ -42,8 +35,9 @@ class GenerateMenu
             $config->add('Global', '#')->data('icon', 'globe')
                    ->data('permission', 'utilities.config');;      
 
-            $utilities = $menu->add('Utilities', '#')->data('icon', 'wrench');
-            $utilities->add('Suppliers', 'suppliers');
+            $admin = $menu->add('Administration', '#')->data('icon', 'cog');
+            $admin->add('Utilities', 'utilities');
+            $admin->add('Suppliers', 'suppliers');
         });
 
         $response = $next($request);

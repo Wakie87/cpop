@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\UserDataTable;
+use App\DataTables\UsersDataTable;
 use App\Http\Requests;
 
 class UserController extends Controller
@@ -12,7 +12,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(UserDataTable $dataTable)
+    public function index(UsersDataTable $dataTable)
     {
         return $dataTable->render('users.index');
     }
@@ -65,17 +65,14 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show and edit selected user.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \App\User $user
+     * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
-        $user = User::findOrFail($id);
-        // return to the edit views
-        return view('users.edit',compact('user'));
+        return view('users.edit', compact('user'));
     }
 
     /**

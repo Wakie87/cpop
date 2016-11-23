@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\User;
+use App\Permission;
 use Yajra\Datatables\Services\DataTable;
 
-class UserDataTable extends DataTable
+class PermissionsDataTable extends DataTable
 {
     /**
      * Display ajax response.
@@ -16,10 +16,7 @@ class UserDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->editColumn('first_name', function($model) {
-               return $model->fullname;
-            })
-            ->addColumn('action', 'users.datatables.action')
+            ->addColumn('action', 'path.to.action.view')
             ->make(true);
     }
 
@@ -30,7 +27,8 @@ class UserDataTable extends DataTable
      */
     public function query()
     {
-        $query = User::query();
+        $query = Permission::query();
+
         return $this->applyScopes($query);
     }
 
@@ -57,8 +55,10 @@ class UserDataTable extends DataTable
     {
         return [
             'id',
-            'first_name' => ['title' => 'Name'],
-            'reg_id'  => ['title' => 'AHPRA No.'],       
+            // add your columns
+            'name' => ['name' => 'name', 'data' => 'name'],
+            'display_name' => ['name' => 'display_name', 'data' => 'display_name'],
+            'description' => ['name' => 'description', 'data' => 'description'],
             'created_at',
             'updated_at',
         ];
@@ -71,6 +71,6 @@ class UserDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'usersdatatables_' . time();
+        return 'permissionsdatatables_' . time();
     }
 }
