@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
 
@@ -182,6 +182,10 @@ return [
         Lavary\Menu\ServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Yajra\Datatables\ButtonsServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
 
@@ -236,6 +240,7 @@ return [
         'Menu' => Lavary\Menu\Facade::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
 
 

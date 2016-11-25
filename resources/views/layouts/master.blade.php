@@ -36,5 +36,6 @@
 	@section('scripts')
 	    @include('layouts.partials.scripts')
 	@show
+    @include('layouts.partials.flash')
 </body>
 </html>

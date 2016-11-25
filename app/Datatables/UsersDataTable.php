@@ -16,7 +16,6 @@ class UsersDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            
             ->editColumn('first_name', function($model) {
                return $model->fullname;
             })
@@ -47,19 +46,19 @@ class UsersDataTable extends DataTable
                     ->ajax('')
                     ->addAction(['width' => '80px'])
                     ->parameters([
-                'stateSave' => true,
-                'order'     => [[0, 'desc']],
-                'buttons'   => [
-                    [
-                        'extend' => 'create',
-                        'text'   => '<i class="fa fa-plus"></i>&nbsp;&nbsp;New User',
-                    ],
-                    'export',
-                    'print',
-                    'reset',
-                    'reload',
-                ],
-            ]);
+                        'order'     => [[0, 'asc']],
+                        'buttons'   => [
+
+                            [
+                                'extend' => 'create',
+                                'text'   => '<i class="fa fa-plus"></i>&nbsp;&nbsp;New User',
+                            ],
+                            'export',
+                            'print',
+                            'reset',
+                            'reload',
+                        ],
+                    ]);
     }                
 
     /**
@@ -70,7 +69,7 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
+            'id' => ['width' => '20px'],
             'first_name' => ['title' => 'Name'],
             'reg_id'  => ['title' => 'AHPRA No.'],       
             'created_at',

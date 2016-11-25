@@ -3,10 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\UsersDataTable;
+use App\User;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    /**
+     * @var \Illuminate\Http\Request
+     */
+    protected $request;
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Yajra\Acl\Models\Role $role
+     */
+    public function __construct(Request $request)
+
+    {
+        $this->request = $request;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -70,9 +89,9 @@ class UserController extends Controller
      * @param \App\User $user
      * @return \Illuminate\View\View
      */
-    public function edit(User $user)
+    public function edit()
     {
-        return view('users.edit', compact('user'));
+        return view('users.edit');
     }
 
     /**
@@ -82,25 +101,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-                // validation
-        $this->validate($request,[
-          'first_name' => 'required',
-          'last_name' => 'required',
-          'reg_id' => 'required',
-      ]);
-
-        $user = User::findOrFail($id);
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->reg_id = $request->reg_id;
-        $user->password = $request->password;
-        $user->status = ($request->status) ? 1 : 0;
-        $user->type = 'Pharmacist';
 
         $user->save();
-
         return redirect()->route('users.index')->with('message-success', 'User updated!');
     }
 

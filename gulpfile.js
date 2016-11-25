@@ -16,7 +16,7 @@ process.env.DISABLE_NOTIFIER = true;
 
 let dirs = {
     'vendor': "./resources/assets/vendor",
-    'public': "./public/vendor",
+    'public': "./public",
 }
 
 elixir(mix => {
@@ -36,7 +36,11 @@ elixir(mix => {
         dirs.vendor + '/AdminLTE/plugins/chartjs/Chart.js',
         dirs.vendor + '/AdminLTE/plugins/datatables/jquery.dataTables.min.js',
         dirs.vendor + '/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js',
-        dirs.public + '/datatables/buttons.server-side.js'
+        dirs.vendor + '/AdminLTE/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js',
+        dirs.vendor + '/datatables.net-buttons/js/dataTables.buttons.min.js',
+        dirs.vendor + '/datatables.net-buttons-bs/js/buttons.bootstrap.min.js',
+        dirs.vendor + '/sweetalert/dist/sweetalert.min.js',
+        dirs.public + '/vendor/datatables/buttons.server-side.js'
     ], 'public/js/admin.js');
 
     // Compile AdminLTE to single file.
@@ -48,7 +52,10 @@ elixir(mix => {
         dirs.vendor + '/AdminLTE/dist/css/AdminLTE.css',
         dirs.vendor + '/AdminLTE/dist/css/skins/_all-skins.css',
         dirs.vendor + '/AdminLTE/plugins/datatables/dataTables.bootstrap.css',
-        dirs.vendor + '/AdminLTE/plugins/datatables/jquery.dataTables.min.css',
+        dirs.vendor + '/AdminLTE/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css',
+        dirs.vendor + '/datatables.net-buttons-bs/css/buttons.bootstrap.min.css',
+        dirs.vendor + '/sweetalert/dist/sweetalert.css',
+        dirs.public + '/css/custom.datatables.css'
     ], 'public/css/admin.css')
 
     // Copy AdminLTE assets.

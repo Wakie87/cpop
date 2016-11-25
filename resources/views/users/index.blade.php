@@ -14,7 +14,7 @@
 
 @section('main-content')
     <div class="box">
-      <div class="box-header with-border">
+        <div class="box-header with-border">
             <h3 class="box-title">
                 <i class="fa fa-search"></i>&nbsp;
                 {{trans('user.index.search')}}
@@ -29,7 +29,7 @@
             <div style="margin-top: 20px;">
                 <div class="row">
                     <div class="col-md-12">
-                        {!! $dataTable->table(['class' => 'table table-hover']) !!}
+                        {!! $dataTable->table(['id' => 'users-table', 'class' => 'table table-hover']) !!}
                     </div>
                 </div>
             </div>
@@ -38,8 +38,6 @@
 @stop
 
 @push('scripts')
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
-<script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
-<script src="/vendor/datatables/buttons.server-side.js"></script>
+<script src="/js/custom.datatables.js"></script>
 {!! $dataTable->scripts() !!}
 @endpush

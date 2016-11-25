@@ -11,7 +11,7 @@
         </button>
         <ul class="dropdown-menu pull-right" role="menu">
             <li>
-                <button data-href="{{ route('users', $id) }}"
+                <button data-href="{{ route('users.edit', $id) }}"
                         class="btn btn-link"
                 >
                     <i class="fa fa-pencil"></i> {{trans('user.edit-user')}}
