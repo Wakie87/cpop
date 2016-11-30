@@ -13,14 +13,12 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
-    static $type = 'Pharmacist';
 
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'password' => $password ?: $password = bcrypt('password'),
         'reg_id' => $faker->randomNumber(7),
-        'type' => $type,
         'status' => $faker->boolean,
     ];
 });

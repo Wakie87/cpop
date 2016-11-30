@@ -14,13 +14,4 @@ class Permission extends EntrustPermission
         'description'
     ];
     
-    /**
-     * Gets the roles associated with the permission
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function roles()
-    {
-        return $this->belongsToMany('App\Role');
-    }
 }

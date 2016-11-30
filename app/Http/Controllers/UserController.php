@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\UsersDataTable;
 use App\User;
+use App\Role;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -19,10 +20,11 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param \Yajra\Acl\Models\Role $role
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, Role $role)
 
     {
         $this->request = $request;
+        $this->role    = $role;
     }
 
 
@@ -44,6 +46,21 @@ class UserController extends Controller
     public function create()
     {
         return view('users.create');
+    }
+    
+    /**
+     * Get allowed roles for the current user.
+     *
+     * @return mixed
+     */
+    protected function getAllowedRoles()
+    {
+        if ($this->request->user('Admin')->isRole('administrator')) {
+            $roles = $this->role->get();
+        } else {
+            $roles = $this->role->where('name', '!=', 'administrator')->get();
+        }
+        return $roles;
     }
 
     /**
@@ -89,9 +106,10 @@ class UserController extends Controller
      * @param \App\User $user
      * @return \Illuminate\View\View
      */
-    public function edit()
+    public function edit(User $user)
     {
-        return view('users.edit');
+        $roles = $this->getAllowedRoles();
+        return view('users.edit', compact('user', 'roles', 'selectedRoles'));
     }
 
     /**

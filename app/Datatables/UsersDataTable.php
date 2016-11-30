@@ -19,6 +19,9 @@ class UsersDataTable extends DataTable
             ->editColumn('first_name', function($model) {
                return $model->fullname;
             })
+            ->editColumn('roles', function (User $user) {
+                return dt_render('users.datatables.roles', compact('user'));
+            })
             ->addColumn('action', 'users.datatables.action')
             ->make(true);
     }
@@ -31,6 +34,14 @@ class UsersDataTable extends DataTable
     public function query()
     {
         $query = User::query();
+
+        if ($status = $this->datatables->getRequest()->get('status')) {
+            $users->whereIn('confirmed', $status);
+        }
+
+        if ($roles = $this->datatables->getRequest()->get('roles')) {
+            $users->havingRoles($roles);
+        }
         return $this->applyScopes($query);
     }
 
@@ -71,7 +82,12 @@ class UsersDataTable extends DataTable
         return [
             'id' => ['width' => '20px'],
             'first_name' => ['title' => 'Name'],
-            'reg_id'  => ['title' => 'AHPRA No.'],       
+            'reg_id' => ['title' => 'AHPRA No.'],
+            'roles' => ['name' => 'roles.name', 'orderable' => false],
+            'confirmed'     => [
+                    'width' => '20px',
+                    'title' => '<i class="fa fa-check" data-toggle="tooltip" data-title="IsActivated"></i>',
+                ],
             'created_at',
             'updated_at',
         ];

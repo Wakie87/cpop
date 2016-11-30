@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Authenticatable
 {
     use Notifiable;
+    use EntrustUserTrait;
+    
     protected $table = 'users';
 
     /**

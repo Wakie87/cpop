@@ -17,10 +17,9 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('reg_id')->unique();
             $table->string('password');
-            $table->string('type');
-            $table->tinyInteger('status', 4)->default('0');
+            $table->string('reg_id')->unique();
+            $table->tinyInteger('status')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Zizaco\Entrust;
+use App\Role;
+use App\User;
 
 class RolesTableSeeder extends Seeder
 {
@@ -15,7 +18,7 @@ class RolesTableSeeder extends Seeder
         $adminRole = new Role();
 		$adminRole->name         = 'administrator';
 		$adminRole->display_name = 'Administrator'; // optional
-		$adminRole->description  = 'System Administrator'; // optional
+		$adminRole->description  = 'Super Administrator'; // optional
 		$adminRole->save();
 
 		 //
@@ -31,5 +34,8 @@ class RolesTableSeeder extends Seeder
 		$pharmacistRole->display_name = 'Pharmacist'; // optional
 		$pharmacistRole->description  = 'User is allowed to dose patients'; // optional
 		$pharmacistRole->save();
+
+		$user = User::where('first_name', '=', 'Admin')->firstOrFail();
+		$user->attachRole($adminRole);
     }
 }

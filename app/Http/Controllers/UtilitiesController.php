@@ -82,6 +82,16 @@ class UtilitiesController extends Controller
     }
 
     /**
+     * Get name of the current user.
+     *
+     * @return string
+     */
+    protected function getCurrentUserName()
+    {
+        return 'scott';
+    }
+
+    /**
      * Clear cache manually.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -121,7 +131,7 @@ class UtilitiesController extends Controller
     {
         Artisan::call('view:clear');
         $this->log->info(trans('utilities.views.success').trans('utilities.field.executed_by',['name'=>$this->getCurrentUserName()]));
-        return $this->notifySuccess(trans('utilities.views.success'));
+        return alert()->success(trans('utilities.views.success'));
     }
 
     /**

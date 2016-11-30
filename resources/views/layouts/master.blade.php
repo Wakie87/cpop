@@ -36,6 +36,6 @@
 	@section('scripts')
 	    @include('layouts.partials.scripts')
 	@show
-    @include('layouts.partials.flash')
+    @include('sweet::alert')
 </body>
 </html>

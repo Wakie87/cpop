@@ -1,14 +1,14 @@
 @if(session('flash_notification.message'))
 <script>
     @if(session('flash_notification.overlay'))
-        pushNotification({
+        swal({
             title: "{!! session('flash_notification.title') !!}",
             text: "{!! session('flash_notification.message') !!}",
             type: "{!! session('flash_notification.level') == 'danger' ? 'error' : session('flash_notification.level') !!}",
             confirmButtonText: 'Okay'
         });
     @else
-        pushNotification({
+        swal({
             title: "{!! session('flash_notification.title') !!}",
             text: "{!! session('flash_notification.message') !!}",
             type: "{!! session('flash_notification.level') == 'danger' ? 'error' : session('flash_notification.level') !!}",
@@ -20,7 +20,7 @@
 
 @if(count($errors->all()) > 0)
     <script>
-        pushNotification({
+        swal({
             title: "Whoops!",
             text: "Please check your form entries.",
             type: "error",

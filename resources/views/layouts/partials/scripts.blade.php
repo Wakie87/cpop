@@ -5,5 +5,14 @@
 <!-- Laravel App -->
 <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/admin.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+        // To make Pace works on Ajax calls
+        $(document).ajaxStart(function() { Pace.restart(); });
 
+		$.ajaxSetup({
+		                headers: {
+		                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		                }
+		            });
+</script>
 @stack('scripts')
